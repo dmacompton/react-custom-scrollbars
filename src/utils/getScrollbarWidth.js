@@ -1,8 +1,10 @@
 import css from 'dom-css';
 let scrollbarWidth = false;
 
+const DEFAULT_WIDTH = 15;
+
 export default function getScrollbarWidth(devicesHaveChanged) {
-    return 15;
+    return DEFAULT_WIDTH;
     if (scrollbarWidth !== false && !devicesHaveChanged) return scrollbarWidth;
     /* istanbul ignore else */
     if (typeof document !== 'undefined') {
@@ -19,7 +21,7 @@ export default function getScrollbarWidth(devicesHaveChanged) {
         scrollbarWidth = div.offsetWidth - div.clientWidth;
         document.body.removeChild(div);
     } else {
-        scrollbarWidth = 0;
+        scrollbarWidth = DEFAULT_WIDTH;
     }
-    return scrollbarWidth || 0;
+    return scrollbarWidth || DEFAULT_WIDTH;
 }
